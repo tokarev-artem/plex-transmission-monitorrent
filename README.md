@@ -8,7 +8,7 @@ Tested on:
 `Installation`
 - git clone https://github.com/RealArtemiy/plex-transmission-monitorrent.git
 - cd plex-transmission-monitorrent
-- Open docker-compose and update timezone and plex claim
+- Open docker-compose and update [timezone](https://en.wikipedia.org/wiki/List_of_tz_database_time_zones) and [plex claim](https://www.plex.tv/claim/)
 - docker-compose up -d
 
 `Configuration`
