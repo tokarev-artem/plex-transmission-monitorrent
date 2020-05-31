@@ -1,0 +1,48 @@
+version: '3'
+services:
+  plex:
+    container_name: plex
+    image: plexinc/pms-docker
+    restart: unless-stopped
+    environment:
+      - TZ=<timezone>
+      - PLEX_CLAIM=<plex-claim>
+      - PLEX_UID=1000
+      - PLEX_GID=1000
+    network_mode: host
+    hostname: home_storage
+    volumes:
+      - "./config:/config"
+      - "./transcode:/transcode"
+      - "./data:/data"
+  transmission:
+    container_name: transmission
+    image: dperson/transmission
+    restart: unless-stopped
+    ports:
+      - "9091:9091"
+      - "8888:8888"
+    env_file: 
+      - ./transmission.env
+    environment:
+      - TZ=<timezone>
+      - USERID=1000
+      - GROUPID=1000
+    volumes:
+      - "./transmission:/var/lib/transmission-daemon/info"
+      - "./data:/var/lib/transmission-daemon/downloads/"
+      - "./tmp:/var/lib/transmission-daemon/incomplete"
+  monitorrent:
+    container_name: monitorrent
+    image: werwolfby/alpine-monitorrent:1.1.12
+    restart: unless-stopped
+    ports:
+      - "6687:6687"
+    volumes:
+      - ./monitorrent/monitorrent.db:/var/www/monitorrent/monitorrent.d
+
+volumes:
+  config:
+  transcode:
+  data:
+  tmp:
