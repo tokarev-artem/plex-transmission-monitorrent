@@ -16,6 +16,9 @@ Tested on:
 - Open http://127.0.0.1:9091/ for transmission (username and password: admin / admin)
 - Open http://127.0.0.1:6687/ for monitorrent (default password is monitorrent)
 
+[Youtube video](https://youtu.be/FgVrmeazIGg)
+
+
 `Used repositories`
 1. https://github.com/plexinc/pms-docker
 2. https://github.com/dperson/transmission
